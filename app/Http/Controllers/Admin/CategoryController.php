@@ -14,8 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        return view('categories.index', compact('categories'));
+        $categories = Category::orderBy('id','desc')->paginate(5);
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -23,7 +23,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
@@ -31,7 +31,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255|unique:categories'
+        ]);
+
+        $category = new Category();
+        $category-> name = $request->name;
+        $category->save();
+        return redirect()->route('categories.index')->with('success', 'Category created successfully');
     }
 
     /**
@@ -47,7 +54,8 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $categories = Category::FindOrFail($id);
+        return view('admin.categories.edit',compact('categories'));
     }
 
     /**
@@ -55,7 +63,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255|unique:categories'
+        ]);
+
+        $category = Category::FindOrFail($id);
+        $category-> name = $request->name;
+        $category->save();
+        return redirect()->route('categories.index')->with('success', 'Category Updated successfully');
     }
 
     /**
@@ -63,6 +78,8 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category = Category::FindOrFail($id);
+        $category->delete();
+        return redirect()->route('categories.index')->with('success','Category has been deleted successfully');
     }
 }

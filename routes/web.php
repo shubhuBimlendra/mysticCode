@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,8 @@ use App\Http\Controllers\Admin\NewsController;
 Route::get('/', function () {
     return view('welcome');               
 });
+
+Route::get('/admin/dashboard', [DashboardController::class,'index'])->name('admin.dashboard');
 
 // Posts Routes
 Route::resource('posts', PostController::class);
