@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\NewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +17,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome');               
 });
+
+// Posts Routes
+Route::resource('posts', PostController::class);
+
+// Categories Routes
+Route::resource('categories', CategoryController::class);
+
+// News Routes
+Route::resource('news', NewsController::class);
