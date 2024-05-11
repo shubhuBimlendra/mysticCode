@@ -16,6 +16,9 @@
                     <li class="active">
                         <a href="{{route('categories.index')}}"> <i class="menu-icon fa fa-table"></i>Manage Category </a>
                     </li>
+                    <li class="active">
+                        <a href="{{route('posts.index')}}"> <i class="menu-icon fa fa-table"></i>Manage Posts </a>
+                    </li>
                     
                     
                 </ul>

@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Categories</title>
+<title>Posts</title>
 <style>
         nav svg {
             height: 20px;
@@ -31,9 +31,10 @@
 <div class="container mt-2">
 <div class="row">
 <div class="col-lg-12 margin-tb">
-<div><h4>Manage Category</h4></div>
+<div><h4>Manage Posts</h4></div>
+
 <div class="pull-right mb-2">
-<a class="btn btn-success" href="{{route('categories.create')}}"> Create Category</a>
+<a class="btn btn-success" href="{{route('posts.create')}}"> Create Post</a>
 </div>
 </div>
 
@@ -46,16 +47,19 @@
 <table class="table table-bordered">
 <tr>
     <th>#</th>
-    <th>Name</th>
+    <th>Title</th>
+    <th>Content</th>
+    <th>Category Name</th>
     <th>Action</th>
 </tr>
-@foreach($categories as $category)
+@foreach($posts as $post)
      <tr>
-        <td>{{$category->id}}</td>
-        <td>{{$category->name}}</td>
+        <td>{{$post->id}}</td>
+        <td>{{$post->title}}</td>
+        <td>{{$post->content}}</td>
         <td>
-            <form action="{{ route('categories.destroy',$category->id) }}" method="Post">
-                <a href="{{ route('categories.edit',$category->id) }}"><i class="fa fa-edit fa-2x text-info"></i></a>
+            <form action="{{ route('posts.destroy',$post->id) }}" method="Post">
+                <a href="{{ route('posts.edit',$post->id) }}"><i class="fa fa-edit fa-2x text-info"></i></a>
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="fa fa-times fa-2x text-danger"></button>
@@ -64,7 +68,7 @@
     </tr>
 @endforeach
 </table>
-{{$categories->links()}}
+{{$posts->links()}}
 </body>
 </html>
 
