@@ -31,10 +31,10 @@
 <div class="container mt-2">
 <div class="row">
 <div class="col-lg-12 margin-tb">
-<div><h4>Manage Posts</h4></div>
+<div><h4>Manage News</h4></div>
 
 <div class="pull-right mb-2">
-<a class="btn btn-success" href="{{route('posts.create')}}"> Create Post</a>
+<a class="btn btn-success" href="{{route('news.create')}}"> Create News</a>
 </div>
 </div>
 
@@ -52,15 +52,15 @@
     <th>Category Name</th>
     <th>Action</th>
 </tr>
-@foreach($posts as $post)
+@foreach($news as $newss)
      <tr>
-        <td>{{$post->id}}</td>
-        <td>{{$post->title}}</td>
-        <td>{{$post->content}}</td>
-        <td>{{$post->category->name}}</td>
+        <td>{{$newss->id}}</td>
+        <td>{{$newss->title}}</td>
+        <td>{{$newss->content}}</td>
+        <td>{{$newss->category->name}}</td>
         <td>
-            <form action="{{ route('posts.destroy',$post->id) }}" method="Post">
-                <a href="{{ route('posts.edit',$post->id) }}"><i class="fa fa-edit fa-2x text-info"></i></a>
+            <form action="{{ route('news.destroy',$newss->id) }}" method="Post">
+                <a href="{{ route('news.edit',$newss->id) }}"><i class="fa fa-edit fa-2x text-info"></i></a>
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="fa fa-times fa-2x text-danger"></button>
@@ -69,7 +69,7 @@
     </tr>
 @endforeach
 </table>
-{{$posts->links()}}
+{{$news->links()}}
 </body>
 </html>
 

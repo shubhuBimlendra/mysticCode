@@ -5,7 +5,7 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="{{route('admin.dashboard')}}"><img src="{{asset('images/homesewalogo.png')}}" alt="Logo" style="width:70px; height:80px;"></a>
+
             </div>
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -19,8 +19,11 @@
                     <li class="active">
                         <a href="{{route('posts.index')}}"> <i class="menu-icon fa fa-table"></i>Manage Posts </a>
                     </li>
-                    
-                    
+                    <li class="active">
+                        <a href="{{route('news.index')}}"> <i class="menu-icon fa fa-table"></i>Manage News </a>
+                    </li>
+
+
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>

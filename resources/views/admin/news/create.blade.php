@@ -6,10 +6,10 @@
 <div class="row">
 <div class="col-lg-12 margin-tb">
 <div class="pull-left mb-2">
-<h2>Update Post</h2>
+<h2>Add News</h2>
 </div>
 <div class="pull-right">
-<a class="btn btn-primary" href="{{ route('posts.index') }}"> Back</a>
+<a class="btn btn-primary" href="{{ route('news.index') }}"> Back</a>
 </div>
 </div>
 </div>
@@ -20,14 +20,13 @@
     </div>
 @endif
 
-<form action="{{ route('posts.update', $posts->id) }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('news.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
-    @method('PUT')
     <div class="row">
     <div class="col-xs-12 col-sm-9">
     <div class="form-group">
     <strong>Title:</strong>
-    <input type="text" name="title" class="form-control" value="{{$posts->title}}">
+    <input type="text" name="title" class="form-control" placeholder="Title">
     @error('title')
     <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
     @enderror
@@ -35,25 +34,23 @@
 
     <div class="form-group">
     <strong>Content:</strong>
-    <input type="text" name="content" class="form-control" value="{{$posts->content}}">
+    <input type="text" name="content" class="form-control" placeholder="Content">
     @error('content')
     <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
     @enderror
     </div>
 
     <div class="form-group">
-    <strong>Category</strong>
-    <select class="form-control" name="category_id">
-        <option value="">Select Category</option>
-        @foreach($categories as $category)
-            <option value="{{$category->id}}" {{ $category->id == $posts->category_id ? 'selected' : '' }}>
-                {{$category->name}}
-            </option>
-        @endforeach
-    </select>
-    @error('category_id')
-    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-    @enderror
+        <strong>Category</strong>
+            <select class="form-control" name="category_id">
+                <option value="">Select Category</option>
+                    @foreach($categories as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
+            </select>
+        @error('category_id')
+        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+        @enderror
     </div>
 
 
